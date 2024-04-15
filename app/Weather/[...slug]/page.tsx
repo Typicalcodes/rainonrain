@@ -95,7 +95,7 @@ const months = [
 export default function Page({ params }: { params: { slug: string[] } }) {
   const dispatch = useAppDispatch();
   const data: WeatherData = useAppSelector((state) => state.weatherstore.Wdata);
-  const forcastdata:  = useAppSelector(
+  const forcastdata  = useAppSelector(
     (state) => state.weatherstore.forcast
   );
   const mylocation: object = useAppSelector((state) => state.weatherstore.mylocation);
