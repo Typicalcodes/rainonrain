@@ -2,30 +2,41 @@
 ## Rain O Rain
 This a project/assignment for a Company called Stamurai for Frontend Job Opportunity.
 
-Usage
+## Usage
 
-/Home Page
+Home Page
 - Search in the Search Box for Any city.
-- Click on the city Tab to Filter City and Same for timezone. Filters can be removed after selecting.
+- Click on the city Tab to Filter City and Same for timezone. Filters and History can be removed after selecting.
 - Below the List there are next or prev Button for Pagination.
+- Click on My city in the nav bar for viewing weather at current location.
+- Click on Favourites for seeing favourite
 
+Weather Page
+- Click on star Icon to make the loaction favourite or vice versa.
+- All details shown with 5 day forecast.
 
-Tech Stack
+Favourites Page
+- Favourite location selected are shown here.
+- Click any to move to that Current Location weather page.
+
+## Tech Stack
 - Next JS
 - React Redux
 - Typescript
 - Tailwind CSS
 - Vercel Deployment
 
-Features 
+## Features 
 - Filtering, Searching and Pagination is done at the Backend which helps in less load on Client side.
 - Dynamic Backgrounds for different weather Condition.
 - Weather for current Location.
 - Made fully Responsive (Small, Medium, Large and Extra Large Screen) using Tailwind CSS.
 - Different Animation for Different Weather using Lottie Player.
 - Interfaces Defined for All Data.
-- Weater Forecast for Five Days/8 Hours.
-- 
+- Weather Forecast for Five Days/8 Hours.
+- History and Favourites are saved in Local Storage.
+- Navbare is present bottome of the screen in small screens.
+
 ## Getting Started
 
 Fork the Repo, and 
