@@ -69,7 +69,11 @@ const Navbar = () => {
   }, [locationData])
   return (
     <div className=" flex bottom-0 md:w-0 md:h-0 md:invisible inset-x-0 m-2 rounded-full bg-white px-4  py-2 justify-around border-2 border-gray-700 fixed z-[1000]">
-    <Link href={mylocation.Latitude == 2 ? "/" : `/Weather/${mylocation.Latitude}/${mylocation.Longitude}/${mylocation.Country}/${mylocation.Name}`}><div className="flex flex-col items-center font-semibold text-gray-700"><FaLocationDot size={20}/><span>My Weather</span> </div></Link>
+    <div onClick={()=>{
+      if(mylocation.Latitude == 2){
+        window.alert("Please Enable Location")
+      }
+    }}><Link href={mylocation.Latitude == 2 ? "/" : `/Weather/${mylocation.Latitude}/${mylocation.Longitude}/${mylocation.Country}/${mylocation.Name}`}><div className="flex flex-col items-center font-semibold text-gray-700"><FaLocationDot size={20}/><span>My Weather</span> </div></Link></div>
     <Link href={"/"}><div className="flex flex-col items-center font-semibold text-gray-700"><FaHome size={20}/><span>Home</span> </div></Link>
     <Link href={"/Favourite"}><div className="flex flex-col items-center font-semibold text-gray-700"><FaStar size={20}/><span>Favourites</span> </div></Link>
   </div>
