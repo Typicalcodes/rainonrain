@@ -138,7 +138,9 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
         <div className="flex  items-center space-x-2"><FaCloudRain size={30}/> <span className="text-white">RainOrain</span></div>
         <div className=" flex bottom-0 md:space-x-4 w-0 h-0 invisible md:visible md:h-auto md:w-auto md:items-center  md:m-2 m-0 rounded-full  justify-around text-white ">
     <Link href={"/"}><div className="flex flex-row items-center space-x-2 font-semibold  hover:text-slate-200 "><span>Home</span> </div></Link>
-    <Link href={Object.keys(mylocation).length === 0 ? "/" : `/Weather/${mylocation.Latitude}/${mylocation.Longitude}/${mylocation.Country}/${mylocation.Name}`}><div className="flex flex-row space-x-2 items-center font-semibold hover:text-slate-200 "><span>My City</span> </div></Link>
+    <div onClick={()=>{if(Object.keys(mylocation).length === 0){
+      window.alert('Enable Location and then Open in New Tab')
+    }}}><Link href={Object.keys(mylocation).length === 0 ? "/" : `/Weather/${mylocation.Latitude}/${mylocation.Longitude}/${mylocation.Country}/${mylocation.Name}`}><div className="flex flex-row space-x-2 items-center font-semibold hover:text-slate-200 "><span>My City</span> </div></Link></div>
     <Link href={"/Favourite"}><div className="flex flex-row items-center space-x-2 font-semibold  hover:text-slate-200 "><span>Favourites</span> </div></Link>
   </div>
       </div>

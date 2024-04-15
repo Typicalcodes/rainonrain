@@ -41,6 +41,7 @@ const Navbar = () => {
         
       },
       (error) => {
+        
         setError(`Error: ${error.message}`);
       }
     );
