@@ -2,13 +2,30 @@
 ## Rain O Rain
 This a project/assignment for a Company called Stamurai for Frontend Job Opportunity.
 
+Usage
+
+/Home Page
+- Search in the Search Box for Any city.
+- Click on the city Tab to Filter City and Same for timezone. Filters can be removed after selecting.
+- Below the List there are next or prev Button for Pagination.
+
 
 Tech Stack
 - Next JS
 - React Redux
+- Typescript
 - Tailwind CSS
 - Vercel Deployment
 
+Features 
+- Filtering, Searching and Pagination is done at the Backend which helps in less load on Client side.
+- Dynamic Backgrounds for different weather Condition.
+- Weather for current Location.
+- Made fully Responsive (Small, Medium, Large and Extra Large Screen) using Tailwind CSS.
+- Different Animation for Different Weather using Lottie Player.
+- Interfaces Defined for All Data.
+- Weater Forecast for Five Days/8 Hours.
+- 
 ## Getting Started
 
 Fork the Repo, and 
