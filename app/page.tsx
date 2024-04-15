@@ -31,7 +31,7 @@ export default function Home() {
   const [togglecu, setTogglecu] = useState<boolean>(false);
   const [toggletz, setToggletz] = useState<boolean>(false);
   const [toggleh, setToggleh] = useState<boolean>(false);
-  const [filter, setFilter] = useState<object>({});
+  const [filter, setFilter] = useState<{[key: string]: any;}>({});
   const [Favlist, setFavlist] = useState<Object[]>([]);
   const [searchResults, setSearchResults] = useState<unknown[]>([]);
   const [searchterm, setSearchterm] = useState<string>("");
