@@ -25,13 +25,17 @@ interface Namecity {
   Latitude : Number,
   Longitude : Number
 }
+interface Filter {
+  timezone?: string;
+  cou_name_en?: string;
+}
 export default function Home() {
   const [pageno, setPageno] = useState<number>(0);
   const [pagenocu, setPagenocu] = useState<number>(1);
   const [togglecu, setTogglecu] = useState<boolean>(false);
   const [toggletz, setToggletz] = useState<boolean>(false);
   const [toggleh, setToggleh] = useState<boolean>(false);
-  const [filter, setFilter] = useState<{[key: string]: any;}>({});
+  const [filter, setFilter] = useState<Filter>({});
   const [Favlist, setFavlist] = useState<Object[]>([]);
   const [searchResults, setSearchResults] = useState<unknown[]>([]);
   const [searchterm, setSearchterm] = useState<string>("");
