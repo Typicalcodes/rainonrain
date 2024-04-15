@@ -3,7 +3,7 @@
 This a project/assignment for a Company called Stamurai for Frontend Job Opportunity.
 
 
-###Tech Stack
+Tech Stack
 - Next JS
 - React Redux
 - Tailwind CSS
