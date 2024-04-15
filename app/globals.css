@@ -50,3 +50,9 @@ body {
 
   }
 }
+.player {
+  @media (min-width: 768px) {
+    height: 300px;
+    width: 300px;
+}
+}

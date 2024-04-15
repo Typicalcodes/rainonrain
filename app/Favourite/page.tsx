@@ -32,7 +32,7 @@ export default function page() {
   }, []);
 
   return (
-    <main className="pb-[70px] min-h-screen md:px-80  bg-blue-400 bg-opacity-10 relative p-2">
+    <main className="pb-[70px] md:py-10 lg:px-60 xl:px-80  md:min-h-screen md:px-40  bg-blue-400 bg-opacity-10 relative p-2">
       <div className="self-start md:flex md:justify-between md:items-center  justify-center  relative  md:py-5 backdrop-blur-lg bg-black backdrop-filter rounded-md bg-opacity-50  text-white p-2 drop-shadow-lg font-bold ">
         <div className="flex  items-center space-x-2"><FaCloudRain size={30}/> <span className="text-white">RainOrain</span></div>
         <div className=" flex bottom-0 md:space-x-4 w-0 h-0 invisible md:visible md:h-auto md:w-auto md:items-center  md:m-2 m-0 rounded-full  justify-around text-white ">

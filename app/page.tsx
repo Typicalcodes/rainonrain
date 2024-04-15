@@ -127,7 +127,7 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
   return (
     <>
      <div style={{backgroundImage: 'url("https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067_1280.png")',
-                    backgroundRepeat: "no-repeat"}} className="p-2 md:bg-cover md:drop-shadow-lg  md:p-32 md:px-80 py-4">
+                    backgroundRepeat: "no-repeat"}} className="p-2 md:bg-cover md:drop-shadow-lg  md:p-32 lg:px-60 xl:px-80 md:px-40 py-4">
       <div className="self-start md:flex md:justify-between md:items-center  justify-center  relative  md:py-5 backdrop-blur-lg bg-black backdrop-filter rounded-md bg-opacity-50  text-white p-2 drop-shadow-lg font-bold ">
         <div className="flex  items-center space-x-2"><FaCloudRain size={30}/> <span className="text-white">RainOrain</span></div>
         <div className=" flex bottom-0 md:space-x-4 w-0 h-0 invisible md:visible md:h-auto md:w-auto md:items-center  md:m-2 m-0 rounded-full  justify-around text-white ">
@@ -153,7 +153,7 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
       </section>
           
       {searchResults.length > 1 && (
-        <section className="border-2 absolute  md:left-80 md:right-80   rounded-md right-2 mt-2 left-2  bg-white z-[1001] ">
+        <section className="border-2 absolute  md:left-40 md:right-40 lg:left-60 lg:right-60 xl:left-80 xl:right-80   rounded-md right-2 mt-2 left-2  bg-white z-[1001] ">
           {searchResults.map((item: any, index) => (
            <Link onClick={()=>{SetHistory(item)}} href={`/Weather/${item.coordinates.lat}/${item.coordinates.lon}/${item.cou_name_en}/${item.name}`} key={index}> <section
               className="flex flex-col text-wrap break-words items-start   text-md font-semibold rounded-sm p-2  "
@@ -191,7 +191,7 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
         </section>)}
       </div>
   
-    <main className=" min-h-screen bg-gray-100 pt-4  md:px-80 pb-[70px] relative p-2">
+    <main className=" min-h-screen bg-gray-100 pt-4  lg:px-60 xl:px-80 md:px-40 md:py-10 pb-[70px] relative p-2">
     <span className="text-lg font-bold p-2 py-4 my-4">Locations</span>
           <section className="bg-white rounded-md p-2">
           
@@ -254,7 +254,7 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
           </div>
         </div>
         {togglecu && (
-          <section className="flex  absolute right-4 md:mx-[22rem] left-4 border bg-white   rounded-lg items-center   justify-center  my-2 ">
+          <section className="flex  absolute right-4 md:mx-[9rem] lg:mx-[14rem] xl:mx-[19rem] left-4 border bg-white   rounded-lg items-center   justify-center  my-2 ">
             <div
               className={`${
                 pagenocu == 1 ? "invisible" : "visible"
@@ -304,7 +304,7 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
           </section>
         )}
         {toggletz && (
-          <section className="flex absolute right-4 left-4 md:max-w-fit md:right-auto md:left-auto  md:justify-center rounded-lg text-center items-center will-change-auto    grid-container py-2   bg-gray-500 text-wrap whitespace-normal    justify-between my-2  ">
+          <section className="flex absolute right-4 left-4 lg:max-w-fit md:right-10 md:left-10 lg:right-16 xl:left-auto lg:left-16 xl:right-auto md:justify-center rounded-lg text-center items-center will-change-auto    grid-container py-2   bg-gray-500 text-wrap whitespace-normal    justify-between my-2  ">
             <div className="grid grid-cols-4 md:grid-cols-10 gap-2  font-normal text-base self-end  p-1 text-white  h-full rounded-lg ">
               {timezonedata &&
                 timezonedata.map((item, index) => (

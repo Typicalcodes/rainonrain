@@ -16,6 +16,9 @@ import { FaDroplet } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
 import Image from "next/image";
 import Link from "next/link";
+
+import { useMediaQuery } from "react-responsive";
+import WeatherData from "@/Utils/interfaces";
 const lottieUrl =
   "https://lottie.host/96cd20b2-7d66-4bfc-9789-a0a5fcb52541/STFPZOkySK.json";
 const weatherAnimations: object = {
@@ -91,8 +94,8 @@ const months = [
 ];
 export default function Page({ params }: { params: { slug: string[] } }) {
   const dispatch = useAppDispatch();
-  const data: object = useAppSelector((state) => state.weatherstore.Wdata);
-  const forcastdata: unknown[] = useAppSelector(
+  const data: WeatherData = useAppSelector((state) => state.weatherstore.Wdata);
+  const forcastdata:  = useAppSelector(
     (state) => state.weatherstore.forcast
   );
   const mylocation: object = useAppSelector((state) => state.weatherstore.mylocation);
@@ -105,7 +108,9 @@ export default function Page({ params }: { params: { slug: string[] } }) {
     year: 124,
   });
   const [datray, setDatray] = useState<dates[]>([]);
-
+  const isSmallScreen = useMediaQuery({
+    query: '(min-width: 768px)'
+  });
 
   useEffect(() => {
     const lat = Number(params.slug[0]);
@@ -190,20 +195,23 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
     if(isFavorite){
 console.log("erache here")
       localStorage.setItem(`favlat=${lat}lon=${lon}`, JSON.stringify(favdata))
+    
     }else if(!isFavorite){
-      localStorage.removeItem(`favlat=${lat}lon=${lon}`)
+      localStorage.removeItem(`favlat=${lat}lon=${lon}`);
+
     }}
 
   },[isFavorite,data])
 
   return (
-    <>
+    <> 
       {data.main && color ? (
+      
         <main
           style={{
             background: `linear-gradient(to bottom, ${color.palette[1]}, ${color.palette[2]}, ${color.palette[3]}, ${color.palette[3]}, #cedbf0)`,
           }}
-          className="pb-[70px] min-h-screen md:px-80 relative p-2"
+          className="pb-[70px] md:py-10 min-h-screen lg:px-60 xl:px-80 md:px-40 relative p-2"
         > <div> <div style={{ background: `${color.palette[0]}` }} className="self-start  md:flex md:justify-between md:items-center  justify-center  relative  md:py-5 backdrop-blur-lg bg-black backdrop-filter rounded-md bg-opacity-50  text-white p-2 drop-shadow-lg font-bold ">
         <div className="flex  items-center  justify-between space-x-2"><div className="flex items-center space-x-2"><FaCloudRain size={30}/> <span className="text-white">RainOrain</span> </div><span onClick={()=>{setIsFavorite((prev)=>!prev)}} className="md:flex md:items-center cursor-pointer hover:text-slate-200 " > {isFavorite ? <FaStar size={20}/>: <FaRegStar size={20}/>}</span></div>
         <div className="flex items-center">
@@ -232,7 +240,7 @@ console.log("erache here")
                 </span>
               </div>
               <div className="md:grid md:grid-cols-2 md:gap-2 md:items-center ">
-              <section className=" h-[13rem]  relative py-2  order-1 rounded-md  flex flex-col items-center w-full my-2  md:pr-1 ">
+              <section className=" h-[13rem]  relative py-2  order-1 rounded-md md:h-[16rem] flex flex-col items-center w-full my-2  md:pr-1 ">
                 <div
                   style={{
                     backgroundImage: `url(${bgprovider(data.weather[0].main)})`,
@@ -240,13 +248,14 @@ console.log("erache here")
                     backgroundRepeat: "no-repeat",
                     width: "100%",
                   }}
-                  className="absolute inset-0 bg-gray-800 opacity-50   rounded-md "
+                  className="absolute inset-0 bg-gray-800 opacity-50  rounded-md "
                 ></div>
                 <Player
                   autoplay
                   loop
                   src={day && weatherAnimations[day][data.weather[0].main]}
-                  style={{ height: "100px", width: "100px" }}
+                  className="player"
+                  style={{ height: isSmallScreen ? "150px" : "100px", width: isSmallScreen ? "150px":"100px" }}
                 ></Player>
                 <div>
                   <div className="grid grid-cols-3">
