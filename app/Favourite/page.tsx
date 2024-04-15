@@ -41,7 +41,7 @@ export default function page() {
     const favlist = favvalues.map((item)=>{if(item!== null){return JSON.parse(item)
     }})
     setFavlist(favlist)
-    console.log(favlist)
+
   }, []);
 
   return (

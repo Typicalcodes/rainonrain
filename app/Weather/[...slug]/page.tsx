@@ -125,10 +125,10 @@ export default function Page({ params }: { params: { slug: string[] } }) {
 
   }, []);
   useEffect(()=>{
-    console.log("prev data",data)
+  
 return()=>{
 dispatch(settingdatanull())
-console.log("i am running")
+
 }
   },[])
 
@@ -155,12 +155,12 @@ console.log("i am running")
         setColor(extractedColors);
       });
     }
-    console.log(data)
+
     const lat = Number(params.slug[0]);
     const lon = Number(params.slug[1]);
      const favorite = localStorage.getItem(`favlat=${lat}lon=${lon}`)
      if (favorite){
-      console.log("hafvo",favorite)
+
       setIsFavorite(true)
     }
    
@@ -188,12 +188,12 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
   useEffect(()=>{
     const lat = Number(params.slug[0]);
     const lon = Number(params.slug[1]);
-    console.log(isFavorite)
+
     if(data){
       const favdata={coordinates: {lon: lon,lat:lat}, name: decodeURIComponent(params.slug[3]) , country: decodeURIComponent(params.slug[2]) }
-      console.log("reached ")
+
     if(isFavorite){
-console.log("erache here")
+
       localStorage.setItem(`favlat=${lat}lon=${lon}`, JSON.stringify(favdata))
     
     }else if(!isFavorite){

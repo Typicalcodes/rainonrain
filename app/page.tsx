@@ -54,7 +54,7 @@ export default function Home() {
   }, [pageno, filter]);
 
  useEffect(()=>{
-console.log("true dta",data)
+ 
  },data)
   useEffect(() => {
     if (togglecu) {
@@ -119,7 +119,6 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
   }, [toggleh]);
   function RemoveHistory(item:CityLocation
   ){
-    console.log(`histlat=${item.coordinates?.lat}lon=${item.coordinates?.lon}`)
     localStorage.removeItem(`histlat=${item.coordinates?.lat}lon=${item.coordinates?.lon}`);
     const newfavlist = Favlist.filter((d)=>d!=item)
     
