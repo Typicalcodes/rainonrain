@@ -53,7 +53,7 @@ const Navbar = () => {
         
        
         const res = await fetch(
-          `http://api.openweathermap.org/geo/1.0/reverse?lat=${locationData.Latitude}&lon=${locationData.Longitude}&limit=1&&appid=51690717b0efc26dcc1cbac748cb55ae`
+          `https://api.openweathermap.org/geo/1.0/reverse?lat=${locationData.Latitude}&lon=${locationData.Longitude}&limit=1&&appid=51690717b0efc26dcc1cbac748cb55ae`
         );
         const json = await res.json();
 
