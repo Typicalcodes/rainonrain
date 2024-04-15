@@ -43,7 +43,7 @@ interface Coord {
     sunset: number;
   }
   
-  interface WeatherData {
+  export interface WeatherData {
     coord: Coord;
     weather: Weather[];
     base: string;
@@ -59,4 +59,19 @@ interface Coord {
     name: string;
     cod: number;
   }
-  export default WeatherData
+
+  export interface Namecity {
+    Name?: string,
+    Country?: string,
+    Latitude?: Number,
+    Longitude?: Number
+}
+export interface CityLocation {
+  coordinates?: {
+    lon?: number;
+    lat?: number;
+  };
+  cou_name_en?: string;
+  name?: string;
+  timezone?: string;
+}

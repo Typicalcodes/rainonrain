@@ -1,23 +1,35 @@
 "use client";
 import { useAppSelector } from "@/Store/hooks";
+import { Namecity } from "@/Utils/interfaces";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaCloudRain } from "react-icons/fa";
 import { IoChevronForward } from "react-icons/io5";
+
+interface FavoriteData {
+  coordinates: {
+      lon: number;
+      lat: number;
+  };
+  name: string;
+  country: string;
+}
 export default function page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const mylocation: object = useAppSelector((state) => state.weatherstore.mylocation);
+  const mylocation: Namecity = useAppSelector((state) => state.weatherstore.mylocation);
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [Favlist, setFavlist] = useState([]);
+  const [Favlist, setFavlist] = useState<FavoriteData[]>([]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    function getLocalStorageItemsStartingWith(prefix) {
-      const items = {};
+    function getLocalStorageItemsStartingWith(prefix: string) {
+      const items: { [key: string]: string | null } = {};
       for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.startsWith(prefix)) {
+        const key = localStorage.key(i); // key will be of type string | null
+        if (key !== null && key.startsWith(prefix)) {
           const value = localStorage.getItem(key);
-          items[key] = value;
+          if (value !== null) {
+            items[key] = value;
+          }
         }
       }
       return items;
@@ -26,7 +38,8 @@ export default function page() {
     // Usage
     const itemsStartingWithPrefix = getLocalStorageItemsStartingWith("fav");
     const favvalues = Object.values(itemsStartingWithPrefix)
-    const favlist = favvalues.map((item)=>JSON.parse(item))
+    const favlist = favvalues.map((item)=>{if(item!== null){return JSON.parse(item)
+    }})
     setFavlist(favlist)
     console.log(favlist)
   }, []);

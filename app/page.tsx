@@ -14,17 +14,13 @@ import { TiDelete } from "react-icons/ti";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
+import { CityLocation, Namecity, WeatherData } from "@/Utils/interfaces";
 interface Locationdata {
   Latitude : Number,
   Longitude : Number
 
 }
-interface Namecity {
-  Name: string,
-  Country: string,
-  Latitude : Number,
-  Longitude : Number
-}
+
 interface Filter {
   timezone?: string;
   cou_name_en?: string;
@@ -39,11 +35,11 @@ export default function Home() {
   const [Favlist, setFavlist] = useState<Object[]>([]);
   const [searchResults, setSearchResults] = useState<unknown[]>([]);
   const [searchterm, setSearchterm] = useState<string>("");
-  const data: any[] = useAppSelector((state) => state.datastore.data);
+  const data: CityLocation[] = useAppSelector((state) => state.datastore.data);
 
 
 
-  const mylocation: object = useAppSelector((state) => state.weatherstore.mylocation);
+  const mylocation:Namecity = useAppSelector((state) => state.weatherstore.mylocation);
   const countrydata: any[] = useAppSelector(
     (state) => state.datastore.countryData
   );
@@ -57,7 +53,9 @@ export default function Home() {
     dispatch(fetchCountryData(pagenocu))
   }, [pageno, filter]);
 
-
+ useEffect(()=>{
+console.log("true dta",data)
+ },data)
   useEffect(() => {
     if (togglecu) {
       dispatch(fetchCountryData(pagenocu));
@@ -86,19 +84,21 @@ export default function Home() {
     return () => clearTimeout(timeoutId); // Cleanup function to cancel previous request
   }, [searchterm]);
 
-  function SetHistory(item:Object){
-
-      localStorage.setItem(`histlat=${item.coordinates.lat}lon=${item.coordinates.lon}`, JSON.stringify(item))
+  function SetHistory(item:CityLocation){
+    
+      localStorage.setItem(`histlat=${item.coordinates?.lat}lon=${item.coordinates?.lon}`, JSON.stringify(item))
 
   }
   useEffect(() => {
     function getLocalStorageItemsStartingWith(prefix: string) {
-      const items:object = {};
+      const items: { [key: string]: string | null } = {};
       for (let i = 0; i < localStorage.length; i++) {
-        const key:unknown = localStorage.key(i);
-        if (key.startsWith(prefix)) {
+        const key = localStorage.key(i); // key will be of type string | null
+        if (key !== null && key.startsWith(prefix)) {
           const value = localStorage.getItem(key);
-          items[key] = value;
+          if (value !== null) {
+            items[key] = value;
+          }
         }
       }
       return items;
@@ -107,7 +107,8 @@ export default function Home() {
     // Usage
     const itemsStartingWithPrefix = getLocalStorageItemsStartingWith("hist");
     const favvalues = Object.values(itemsStartingWithPrefix)
-    const favlist = favvalues.map((item)=>JSON.parse(item))
+    const favlist = favvalues.map((item)=>{if(item!== null){return JSON.parse(item)
+    }})
     // Create a Set with custom comparison logic
 const setOfObjects = new Set(favlist.map((item) => JSON.stringify(item)));
 
@@ -116,9 +117,10 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
     setFavlist(uniqueArray)
     
   }, [toggleh]);
-  function RemoveHistory(item){
-    console.log(`histlat=${item.coordinates.lat}lon=${item.coordinates.lon}`)
-    localStorage.removeItem(`histlat=${item.coordinates.lat}lon=${item.coordinates.lon}`);
+  function RemoveHistory(item:CityLocation
+  ){
+    console.log(`histlat=${item.coordinates?.lat}lon=${item.coordinates?.lon}`)
+    localStorage.removeItem(`histlat=${item.coordinates?.lat}lon=${item.coordinates?.lon}`);
     const newfavlist = Favlist.filter((d)=>d!=item)
     
     setFavlist(newfavlist)
@@ -331,7 +333,7 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
           data.map((item, index) => (
             <Link
             onClick={()=>{SetHistory(item)}}
-            href={`/Weather/${item.coordinates.lat}/${item.coordinates.lon}/${item.cou_name_en}/${item.name}`}
+            href={`/Weather/${item.coordinates?.lat}/${item.coordinates?.lon}/${item.cou_name_en}/${item.name}`}
               key={index}
               className="grid grid-cols-3 space-x-1 hover:bg-gray-200  py-2 px-1 rounded-md bg-gray-100 text-left text-gray-900 gap-[1px] items-center justify-between mt-2 text-wrap  font-semibold"
             >

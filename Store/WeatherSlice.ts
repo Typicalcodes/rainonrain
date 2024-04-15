@@ -1,19 +1,34 @@
+import { WeatherData } from '@/Utils/interfaces';
 import { ThunkDispatch, createSlice } from '@reduxjs/toolkit';
+
+interface Namecity {
+  Name: string,
+  Country: string,
+  Latitude : Number,
+  Longitude : Number
+}
+interface WeatherState<T = Record<string, unknown>> {
+  Wdata: T;
+  errorvalue: boolean;
+  forcast: any[]; // Assuming forcast can hold an array of any type
+  mylocation: Record<string, unknown>; // Assuming mylocation can hold any type of data
+}
+
 
 export const WeatherSlice = createSlice({
   name: 'datastore',
   initialState: {
-    Wdata: {},
+    Wdata: {} as WeatherData,
     errorvalue: false,
     forcast:[],
     mylocation:{}
 
-  },
+  } as WeatherState<WeatherData>,
   reducers: {
     fetchWDataSuccess: (state, action) => {
       const { data } = action.payload;
 
-      state.Wdata = data;
+      state.Wdata= data;
       state.errorvalue = false;
     },
     fetchFDataSuccess: (state, action) => {
@@ -26,7 +41,7 @@ export const WeatherSlice = createSlice({
       state.errorvalue = true;
     },
     setdatanull: (state) =>{
-      state.Wdata = {}
+      state.Wdata = {} as WeatherData;
     },
     setmylocation: (state,action)=>{
       state.mylocation = action.payload

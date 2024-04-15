@@ -18,10 +18,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useMediaQuery } from "react-responsive";
-import WeatherData from "@/Utils/interfaces";
+import {Namecity, WeatherData} from "@/Utils/interfaces";
+interface WeatherAnimations {
+  [dayOrNight: string]: {
+    [weatherCondition: string]: string;
+  };
+}
 const lottieUrl =
   "https://lottie.host/96cd20b2-7d66-4bfc-9789-a0a5fcb52541/STFPZOkySK.json";
-const weatherAnimations: object = {
+const weatherAnimations: WeatherAnimations = {
   Day: {
     Clear:
       "https://lottie.host/0d9ee58a-cb86-4e7a-bdf8-08bb5e745e64/YMs3H9qZXs.json",
@@ -98,7 +103,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
   const forcastdata  = useAppSelector(
     (state) => state.weatherstore.forcast
   );
-  const mylocation: object = useAppSelector((state) => state.weatherstore.mylocation);
+  const mylocation:Namecity = useAppSelector((state) => state.weatherstore.mylocation);
   const [color, setColor] = useState<any>(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const [day, setDay] = useState<string>("");
@@ -161,12 +166,7 @@ console.log("i am running")
    
   }, [data, forcastdata]);
   useEffect(() => {
-    const datearray = new Set(
-      forcastdata.map((item) => {
-        const date = new Date(item.dt * 1000);
-        return date.getDate();
-      })
-    );
+
 const dateobjarray = forcastdata.map((item) => {
   const date = new Date(item.dt * 1000);
   return { date: date.getDate(), day: date.getDay(), month: date.getMonth() };
