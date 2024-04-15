@@ -9,7 +9,7 @@ Home Page
 - Click on the city Tab to Filter City and Same for timezone. Filters and History can be removed after selecting.
 - Below the List there are next or prev Button for Pagination.
 - Click on My city in the nav bar for viewing weather at current location.
-- Click on Favourites for seeing favourite
+- Click on Favourites for seeing list of favourite locations.
 
 Weather Page
 - Click on star Icon to make the loaction favourite or vice versa.
