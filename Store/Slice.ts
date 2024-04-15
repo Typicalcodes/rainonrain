@@ -33,8 +33,12 @@ export const dataSlice = createSlice({
   }
 });
 
+interface Filter {
+  timezone?: string;
+  cou_name_en?: string;
+}
 // Async action creators
-export const fetchData = (filter:object,pageno:number) => async (dispatch: ThunkDispatch<any, any, any>) => {
+export const fetchData = (filter:Filter,pageno:number) => async (dispatch: ThunkDispatch<any, any, any>) => {
     let where = null;
     let country = null;
     if(filter.timezone){
