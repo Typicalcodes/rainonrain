@@ -178,13 +178,13 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
       )}
       
       {Favlist.length>0  && (
-        <section className="border-2  md:border-none rounded-md py-2   mt-2 md:bg-none   bg-white md:bg-transparent ">
-          <span className="text-lg font-semibold p-2 my-2 md:invisible md:hidden">Recents</span>
-          <div className="md:flex md:flex-wrap  md:space-x-2 md:text-white ">
+        <section className="border-2  border-none rounded-md py-2   mt-2 bg-none   bg-transparent ">
+          
+          <div className="md:flex md:flex-wrap space-y-2  md:space-x-2 text-white ">
           {Favlist.map((item: any, index) => (
-            <div key={index} className="flex  items-center md:rounded-lg  md:my-1 md:backdrop-filter md:backdrop-blur-md md:bg-black md:bg-opacity-50   md:space-x-1 md:bg-none justify-between w-fit">
+            <div key={index} className="flex  items-center rounded-lg  md:my-1 backdrop-filter backdrop-blur-md bg-black bg-opacity-50   md:space-x-1 bg-none justify-between w-fit">
            <Link  href={`/Weather/${item.coordinates.lat}/${item.coordinates.lon}/${item.cou_name_en}/${item.name}`} key={index}> <section
-              className="flex   drop-shadow-md text-wrap break-words  w-full space-x-3  text-md font-light rounded-sm p-2  md:text-white text-gray-950"
+              className="flex   drop-shadow-md text-wrap break-words  w-full space-x-3  text-md font-light rounded-sm p-2  text-white "
               
             >
               <div className="md:flex ">{item.name}, {item.cou_name_en}</div>
@@ -200,7 +200,7 @@ const uniqueArray = Array.from(setOfObjects).map((item) => JSON.parse(item));
         </section>)}
       </div>
   
-    <main className=" min-h-screen bg-gray-100 pt-4  lg:px-60 xl:px-80 md:px-40 md:py-10 pb-[70px] relative p-2">
+    <main className=" min-h-screen bg-gray-100 pt-4  lg:px-60 xl:px-80 md:px-40 md:py-10 pb-[70px] p-2">
     <span className="text-lg font-bold p-2 py-4 my-4">Locations</span>
           <section className="bg-white rounded-md p-2">
           
